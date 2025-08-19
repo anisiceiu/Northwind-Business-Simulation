@@ -1,0 +1,15 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;           /* full viewport height */
+    width: 100%;    
+}
+
+.mat-mdc-card.mdc-card{
+padding: 50px;
+}
+
+.mat-mdc-card-title, .mat-mdc-card-subtitle{
+    text-align: center;
+}

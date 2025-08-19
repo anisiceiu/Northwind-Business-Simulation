@@ -1,0 +1,83 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* Default drawer overlay */
+.cdk-overlay-pane.mat-mdc-dialog-panel{
+    max-width: 1380px!important;
+}
+/* Drawer overlay panel */
+.drawer-wrapper{
+  padding: 20px!important;
+}
+.drawer-header
+{
+  display: flex;
+  justify-content: space-between;
+}
+.right-drawer-overlay {
+  margin: 0 !important;
+  height: 100% !important;
+  max-height: 100% !important;
+  border-radius: 0 !important;   /* 🔥 removes rounded corners */
+  position: fixed !important;
+  right: 0;
+  top: 0;
+  animation: slideInRight 0.3s ease-out forwards;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2); /* optional shadow like Upwork */
+}
+
+.mat-mdc-dialog-surface{
+   border-radius: 0 !important; 
+}
+
+/* If you want only left corners rounded */
+.right-drawer-overlay.rounded-left {
+  border-top-left-radius: 12px !important;
+  border-bottom-left-radius: 12px !important;
+}
+
+/* If you want Upwork-like sharp edges */
+.right-drawer-overlay.sharp {
+  border-radius: 0 !important;
+}
+
+/* When closing, add a class to trigger slide-out */
+.right-drawer-overlay.slide-out {
+  animation: slideOutRight 0.3s ease-in forwards;
+}
+
+/* Slide-in */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Slide-out */
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* Backdrop like Upwork */
+.drawer-backdrop {
+  background: rgba(0, 0, 0, 0.5) !important;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled),
+.mdc-text-field--filled:not(.mdc-text-field--disabled):hover
+{
+  background-color: white!important;
+}
