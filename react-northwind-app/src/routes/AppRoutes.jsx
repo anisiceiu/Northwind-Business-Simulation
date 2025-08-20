@@ -9,7 +9,7 @@ const AppRoutes = () => {
   return (
     <Routes>
       <Route
-        path="/"
+        path="/dashboard"
         element={
           <ProtectedRoute>
             <Dashboard />
