@@ -16,7 +16,7 @@ namespace Northwind.Api.Controllers
             _productService = productService;
         }
 
-        // GET: api/Category
+        // GET: api/Product
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ProductDTO>>> GetAll()
         {
@@ -24,7 +24,7 @@ namespace Northwind.Api.Controllers
             return Ok(products);
         }
 
-        // GET: api/Category/5
+        // GET: api/Product/5
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductDTO>> GetById(int id)
         {
@@ -33,7 +33,7 @@ namespace Northwind.Api.Controllers
             return Ok(product);
         }
 
-        // POST: api/Category
+        // POST: api/Product
         [HttpPost]
         public async Task<ActionResult<ProductDTO>> Create(ProductDTO productDto)
         {
@@ -41,7 +41,7 @@ namespace Northwind.Api.Controllers
             return CreatedAtAction(nameof(GetById), new { id = created.ProductId }, created);
         }
 
-        // PUT: api/Category/5
+        // PUT: api/Product/5
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, ProductDTO productDto)
         {
@@ -53,7 +53,7 @@ namespace Northwind.Api.Controllers
             return NoContent();
         }
 
-        // DELETE: api/Category/5
+        // DELETE: api/Product/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

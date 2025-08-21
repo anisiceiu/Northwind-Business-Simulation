@@ -6,6 +6,7 @@ import NotFound from "../pages/NotFound";
 import ProtectedRoute from "../features/auth/ProtectedRoute";
 import Layout from "../component/Layout";
 import ProductList from '../features/products/ProductList';
+import ProductForm from "../features/products/ProductForm";
 
 const AppRoutes = () => {
   return (
@@ -13,8 +14,9 @@ const AppRoutes = () => {
         <Route element={<ProtectedRoute layout={Layout}   />}>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/product-list" element={<ProductList />} />
+        <Route path="/add-product" element={<ProductForm />} />
         {/* <Route path="/department-grid" element={<DepartmentGrid />} />
-        <Route path="/add-department" element={<AddDepartment />} />
+        
         <Route path="/department/:id" element={<EditDepartmentForm />} />
         <Route path="/employee-list" element={<EmployeeList />} />
         <Route path="/employee-grid" element={<EmployeeGrid />} />

@@ -39,6 +39,7 @@ namespace Northwind.Infrastructure.Extensions
 
             // Specific service
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ISupplierService, SupplierService>();
             return services;
         }
     }

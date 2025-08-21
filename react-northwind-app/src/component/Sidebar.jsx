@@ -85,16 +85,16 @@ const Sidebar = () => {
                                         </Link>
                                     </li>
                                     <li className="sidebar-item">
-                                        <a className="sidebar-link justify-content-between"
-                                            href="#">
+                                        <Link className="sidebar-link justify-content-between"
+                                            to="/add-product">
                                             <div className="d-flex align-items-center gap-3">
                                                 <div className="round-16 d-flex align-items-center justify-content-center">
                                                     <i className="ti ti-circle"></i>
                                                 </div>
-                                                <span className="hide-menu">About Us</span>
+                                                <span className="hide-menu">Add Product</span>
                                             </div>
 
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li className="sidebar-item">
                                         <a className="sidebar-link justify-content-between"

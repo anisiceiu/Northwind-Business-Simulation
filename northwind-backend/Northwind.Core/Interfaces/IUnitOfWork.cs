@@ -12,6 +12,7 @@ namespace Northwind.Core.Interfaces
         IRepository<Category> CategoryRepository { get; }
         IRepository<Product> ProductRepository { get; }
         IRepository<User> AccountRepository { get; }
+        IRepository<Supplier> SupplierRepository { get; }
         // Add other repositories as needed
 
         Task<int> CommitAsync();
