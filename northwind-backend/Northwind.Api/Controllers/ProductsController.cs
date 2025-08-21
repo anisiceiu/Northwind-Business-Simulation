@@ -20,17 +20,17 @@ namespace Northwind.Api.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ProductDTO>>> GetAll()
         {
-            var categories = await _productService.GetAllWithIncludesAsync();
-            return Ok(categories);
+            var products = await _productService.GetAllWithIncludesAsync();
+            return Ok(products);
         }
 
         // GET: api/Category/5
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductDTO>> GetById(int id)
         {
-            var category = await _productService.GetByIdAsync(id);
-            if (category == null) return NotFound();
-            return Ok(category);
+            var product = await _productService.GetByIdAsync(id);
+            if (product == null) return NotFound();
+            return Ok(product);
         }
 
         // POST: api/Category
