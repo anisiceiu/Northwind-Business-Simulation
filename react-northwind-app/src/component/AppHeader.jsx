@@ -1,9 +1,16 @@
 import React from 'react';
 import useSidebarToggle from '../hooks/useSidebarToggle';
+import { useDispatch } from "react-redux";
+import { loginSuccess, logout } from "../features/auth/authSlice";
 
 const AppHeader = () => {
+   const dispatch=useDispatch();
+   const { handleToggle } = useSidebarToggle();
 
-    const { handleToggle } = useSidebarToggle();
+   const handleLogout=()=>
+   {
+     dispatch(logout());
+   }
 
     return (
         <div>
@@ -38,7 +45,7 @@ const AppHeader = () => {
                                                     <i className="ti ti-list-check fs-6"></i>
                                                     <p className="mb-0 fs-3">My Task</p>
                                                 </a>
-                                                <a href="./authentication-login.html" className="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+                                                <a onClick={handleLogout} className="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
                                             </div>
                                         </div>
                                     </li>
