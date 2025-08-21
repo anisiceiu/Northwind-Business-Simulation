@@ -9,22 +9,32 @@ import {
 export const useProducts = () => {
   const queryClient = useQueryClient();
 
-  const { data, isLoading, error } = useQuery(["products"], fetchProducts);
-
-  const addMutation = useMutation(createProduct, {
-    onSuccess: () => queryClient.invalidateQueries(["products"]),
+  const { data, isLoading, error } = useQuery({
+    queryKey: ['products'],   // array form recommended
+    queryFn: fetchProducts,
   });
 
-  const updateMutation = useMutation(
-    ({ id, product }) => updateProduct(id, product),
-    {
-      onSuccess: () => queryClient.invalidateQueries(["products"]),
-    }
-  );
+  const addMutation = useMutation({
+  mutationFn: createProduct, // <-- use "mutationFn" instead of first argument
+  onSuccess: () => {
+    queryClient.invalidateQueries({ queryKey: ['products'] });
+  },
+});
 
-  const deleteMutation = useMutation(deleteProduct, {
-    onSuccess: () => queryClient.invalidateQueries(["products"]),
+  const updateMutation = useMutation({
+  mutationFn: ({ id, product }) => updateProduct(id, product),
+  onSuccess: () => {
+    queryClient.invalidateQueries({ queryKey: ['products'] });
+  },
+});
+
+  const deleteMutation = useMutation({
+    mutationFn:({id})=>deleteProduct(id),
+    onSuccess:()=>{
+      queryClient.invalidateQueries({queryKey:['products']})
+    }
   });
 
   return { data, isLoading, error, addMutation, updateMutation, deleteMutation };
 };
+

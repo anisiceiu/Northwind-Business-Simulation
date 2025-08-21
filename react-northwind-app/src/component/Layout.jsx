@@ -2,7 +2,7 @@ import React from 'react';
 import AppHeader from './AppHeader';
 import Header from './Header';
 import Sidebar from './Sidebar';
-
+import {Outlet } from "react-router-dom";
 
 const Layout = ({ children }) => {
 
@@ -23,9 +23,7 @@ const Layout = ({ children }) => {
         <div className="container-fluid">
           <div className="card">
             <div className="card-body">
-              <h5 className="card-title fw-semibold mb-4">Sample Page</h5>
-              <p className="mb-0">This is a sample page </p>
-              {children}
+              <Outlet/>
             </div>
           </div>
         </div>

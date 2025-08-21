@@ -5,20 +5,22 @@ import LoginPage from "../pages/LoginPage";
 import NotFound from "../pages/NotFound";
 import ProtectedRoute from "../features/auth/ProtectedRoute";
 import Layout from "../component/Layout";
+import ProductList from '../features/products/ProductList';
 
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route
-        path="/dashboard"
-        element={
-          <ProtectedRoute>
-            <Layout>
-            <Dashboard />
-            </Layout>
-          </ProtectedRoute>
-        }
-      />
+        <Route element={<ProtectedRoute layout={Layout}   />}>
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/product-list" element={<ProductList />} />
+        {/* <Route path="/department-grid" element={<DepartmentGrid />} />
+        <Route path="/add-department" element={<AddDepartment />} />
+        <Route path="/department/:id" element={<EditDepartmentForm />} />
+        <Route path="/employee-list" element={<EmployeeList />} />
+        <Route path="/employee-grid" element={<EmployeeGrid />} />
+        <Route path="/add-employee" element={<AddEmployee />} />
+        <Route path="/employee/:id" element={<EditEmployeeForm />} /> */}
+      </Route>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/" element={<LoginPage />} />
       <Route path="*" element={<NotFound />} />

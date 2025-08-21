@@ -38,7 +38,7 @@ namespace Northwind.Infrastructure.Extensions
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
             // Specific service
-            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IProductService, ProductService>();
             return services;
         }
     }

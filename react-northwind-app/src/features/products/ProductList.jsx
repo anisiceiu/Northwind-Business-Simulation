@@ -11,12 +11,12 @@ const ProductList = () => {
     <ul className="space-y-2">
       {data?.map((p) => (
         <li
-          key={p.id}
+          key={p.productId}
           className="flex justify-between items-center border p-2 rounded"
         >
-          <span>{p.name}</span>
+          <span>{p.productName}</span>
           <button
-            onClick={() => deleteMutation.mutate(p.id)}
+            onClick={() => deleteMutation.mutate({id:p.productId})}
             className="text-red-500"
           >
             Delete
