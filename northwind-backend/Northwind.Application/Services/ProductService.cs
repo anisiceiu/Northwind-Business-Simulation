@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Northwind.Application.Services
 {
-    public class ProductService:IProductService
+    public class ProductService : IProductService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
@@ -26,6 +26,38 @@ namespace Northwind.Application.Services
         {
             var products = await _unitOfWork.ProductRepository.GetAllAsync();
             return _mapper.Map<IEnumerable<ProductDTO>>(products);
+        }
+
+        public async Task<IEnumerable<ProductDTO>> GetAllWithIncludesAsync()
+        {
+            var products = await _unitOfWork.ProductRepository.GetAllWithIncludesAsync("Category", "Supplier");
+            if (products == null || !products.Any())
+            {
+                return Enumerable.Empty<ProductDTO>();
+            }
+            else
+            {
+                var productDTOs = products.Select(p =>
+                new ProductDTO
+                {
+                    CategoryId = p.CategoryId,
+                    CategoryName = p.Category?.CategoryName,
+                    ProductId = p.ProductId,
+                    ProductName = p.ProductName,
+                    QuantityPerUnit = p.QuantityPerUnit,
+                    Discontinued = p.Discontinued,
+                    ReorderLevel = p.ReorderLevel,
+                    SupplierId = p.SupplierId,
+                    SupplierName = p.Supplier?.CompanyName,
+                    UnitPrice = p.UnitPrice,
+                    UnitsInStock = p.UnitsInStock,
+                    UnitsOnOrder = p.UnitsOnOrder
+
+                }).OrderBy(p => p.ProductName).ToList();
+
+                return productDTOs;
+            }
+
         }
 
         public async Task<ProductDTO?> GetByIdAsync(int id)

@@ -11,6 +11,7 @@ namespace Northwind.Core.Interfaces
     {
         Task<T> GetByIdAsync(int id);
         Task<IEnumerable<T>> GetAllAsync();
+        Task<IEnumerable<T>> GetAllWithIncludesAsync(params string[] includes);
         Task AddAsync(T entity);
         Task UpdateAsync(T entity);
         Task DeleteAsync(T entity);

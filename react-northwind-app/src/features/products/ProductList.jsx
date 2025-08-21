@@ -1,5 +1,49 @@
 import React from "react";
 import { useProducts } from "./hooks/useProducts";
+import { DataGrid } from '@mui/x-data-grid';
+
+const columns = [
+  { field: 'productId', headerName: 'ID', width: 90 },
+  {
+    field: 'productName',
+    headerName: 'Product Name',
+    width: 150,
+    editable: true,
+  },
+    {
+    field: 'categoryName',
+    headerName: 'Category Name',
+    width: 150,
+    editable: true,
+  },
+    {
+    field: 'supplierName',
+    headerName: 'Supplier Name',
+    width: 150,
+    editable: true,
+  },
+  {
+    field: 'quantityPerUnit',
+    headerName: 'Quantity',
+    width: 150,
+    editable: true,
+  },
+  {
+    field: 'unitPrice',
+    headerName: 'Unit Price',
+    type: 'number',
+    width: 110,
+    editable: true,
+  },
+  {
+    field: 'unitsInStock',
+    headerName: 'units InStock',
+    description: 'This column has a value getter and is not sortable.',
+    sortable: false,
+    width: 160,
+    //valueGetter: (value, row) => `${row.firstName || ''} ${row.lastName || ''}`,
+  },
+];
 
 const ProductList = () => {
   const { data, isLoading, error, deleteMutation } = useProducts();
@@ -8,22 +52,23 @@ const ProductList = () => {
   if (error) return <p>Error loading products</p>;
 
   return (
-    <ul className="space-y-2">
-      {data?.map((p) => (
-        <li
-          key={p.productId}
-          className="flex justify-between items-center border p-2 rounded"
-        >
-          <span>{p.productName}</span>
-          <button
-            onClick={() => deleteMutation.mutate({id:p.productId})}
-            className="text-red-500"
-          >
-            Delete
-          </button>
-        </li>
-      ))}
-    </ul>
+    <>
+     <DataGrid
+        rows={data}
+        columns={columns}
+        getRowId={(row) => row.productId}
+        initialState={{
+          pagination: {
+            paginationModel: {
+              pageSize: 5,
+            },
+          },
+        }}
+        pageSizeOptions={[5]}
+        
+        disableRowSelectionOnClick
+      />
+    </>
   );
 };
 

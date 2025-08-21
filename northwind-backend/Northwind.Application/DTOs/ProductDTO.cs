@@ -28,5 +28,9 @@ namespace Northwind.Application.DTOs
 
         public bool Discontinued { get; set; }
 
+        public string? SupplierName { get; set; }
+
+        public string? CategoryName { get; set; }
+
     }
 }

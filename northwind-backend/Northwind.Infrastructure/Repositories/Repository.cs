@@ -29,6 +29,17 @@ namespace Northwind.Infrastructure.Repositories
             return await _context.Set<T>().ToListAsync();
         }
 
+        public async Task<IEnumerable<T>> GetAllWithIncludesAsync(params string[] includes)
+        {
+            IQueryable<T> query = _context.Set<T>();
+
+            foreach (var include in includes)
+            {
+                query = query.Include(include);
+            }
+
+            return await query.ToListAsync();
+        }
         public async Task AddAsync(T entity)
         {
             await _context.Set<T>().AddAsync(entity);

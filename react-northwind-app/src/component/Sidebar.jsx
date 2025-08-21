@@ -1,5 +1,6 @@
 import React from 'react';
 import useSidebarToggle from '../hooks/useSidebarToggle';
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
     const { handleToggle } = useSidebarToggle();
@@ -30,10 +31,10 @@ const Sidebar = () => {
                                 <span className="hide-menu">Home</span>
                             </li>
                             <li className="sidebar-item">
-                                <a className="sidebar-link" href="./index.html" aria-expanded="false">
+                                <Link className="sidebar-link" to="/dashboard" aria-expanded="false">
                                     <i className="ti ti-atom"></i>
                                     <span className="hide-menu">Dashboard</span>
-                                </a>
+                                </Link>
                             </li>
 
                             <li className="sidebar-item">
@@ -66,22 +67,22 @@ const Sidebar = () => {
                                         <span className="d-flex">
                                             <i className="ti ti-layout-grid"></i>
                                         </span>
-                                        <span className="hide-menu">Front Pages</span>
+                                        <span className="hide-menu">Products</span>
                                     </div>
 
                                 </a>
                                 <ul aria-expanded="false" className="collapse first-level">
                                     <li className="sidebar-item">
-                                        <a className="sidebar-link justify-content-between"
-                                            href="#">
+                                        <Link className="sidebar-link justify-content-between"
+                                            to="/product-list">
                                             <div className="d-flex align-items-center gap-3">
                                                 <div className="round-16 d-flex align-items-center justify-content-center">
                                                     <i className="ti ti-circle"></i>
                                                 </div>
-                                                <span className="hide-menu">Homepage</span>
+                                                <span  className="hide-menu">List Products</span>
                                             </div>
 
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li className="sidebar-item">
                                         <a className="sidebar-link justify-content-between"
