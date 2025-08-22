@@ -19,6 +19,7 @@ namespace Northwind.Application.MappingProfiles
             CreateMap<Supplier, SupplierDto>().ReverseMap();
             CreateMap<Customer, CustomerDto>().ReverseMap();
             CreateMap<Employee, EmployeeDto>().ReverseMap();
+            CreateMap<Shipper, ShipperDto>().ReverseMap();
         }
     }
 }

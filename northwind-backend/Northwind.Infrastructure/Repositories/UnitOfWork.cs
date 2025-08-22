@@ -22,6 +22,7 @@ namespace Northwind.Infrastructure.Repositories
             SupplierRepository = new Repository<Supplier>(_context);
             CustomerRepository = new Repository<Customer>(_context);
             EmployeeRepository = new Repository<Employee>(_context);
+            ShipperRepository = new Repository<Shipper>(_context);
         }
 
         public IRepository<Category> CategoryRepository { get; }
@@ -30,6 +31,7 @@ namespace Northwind.Infrastructure.Repositories
         public IRepository<Supplier> SupplierRepository { get; }
         public IRepository<Customer> CustomerRepository { get; }
         public IRepository<Employee> EmployeeRepository { get; }
+        public IRepository<Shipper> ShipperRepository { get; }
 
         public async Task<int> CommitAsync()
         {

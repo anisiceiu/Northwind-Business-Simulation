@@ -15,6 +15,7 @@ namespace Northwind.Core.Interfaces
         IRepository<Supplier> SupplierRepository { get; }
         IRepository<Customer> CustomerRepository { get; }
         IRepository<Employee> EmployeeRepository { get; }
+        IRepository<Shipper> ShipperRepository { get; }
         // Add other repositories as needed
 
         Task<int> CommitAsync();
