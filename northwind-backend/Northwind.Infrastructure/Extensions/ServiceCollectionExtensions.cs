@@ -43,6 +43,7 @@ namespace Northwind.Infrastructure.Extensions
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped<IShipperService, ShipperService>();
+            services.AddScoped<ITerritoryService, TerritoryService>();
             return services;
         }
     }
