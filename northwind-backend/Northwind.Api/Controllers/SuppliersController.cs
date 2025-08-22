@@ -35,9 +35,9 @@ namespace Northwind.Api.Controllers
 
         // POST: api/Supplier
         [HttpPost]
-        public async Task<ActionResult<SupplierDto>> Create(SupplierDto categoryDto)
+        public async Task<ActionResult<SupplierDto>> Create(SupplierDto supplierDto)
         {
-            var created = await _supplierService.CreateAsync(categoryDto);
+            var created = await _supplierService.CreateAsync(supplierDto);
             return CreatedAtAction(nameof(GetById), new { id = created.SupplierId }, created);
         }
 

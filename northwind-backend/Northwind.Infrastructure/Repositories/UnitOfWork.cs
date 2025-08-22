@@ -20,13 +20,14 @@ namespace Northwind.Infrastructure.Repositories
             ProductRepository = new Repository<Product>(_context);
             AccountRepository = new Repository<User>(_context);
             SupplierRepository = new Repository<Supplier>(_context);
+            CustomerRepository = new Repository<Customer>(_context);
         }
 
         public IRepository<Category> CategoryRepository { get; }
         public IRepository<Product> ProductRepository { get; }
         public IRepository<User> AccountRepository { get; }
         public IRepository<Supplier> SupplierRepository { get; }
-
+        public IRepository<Customer> CustomerRepository { get; }
 
         public async Task<int> CommitAsync()
         {
